@@ -1,0 +1,22 @@
+:: StoryTitle
+1231
+
+
+:: StoryData
+{
+  "ifid": "AF94153E-B852-4285-AC30-3260652710A2",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Start",
+  "zoom": 1
+}
+
+
+:: Reply {"position":"1000,400","size":"100,100"}
+General Kenobi
+''Bold gsdgsdgdsgsdgsdgsdg Text''
+
+
+:: Start {"position":"800,400","size":"100,100"}
+
+''Hello there''
