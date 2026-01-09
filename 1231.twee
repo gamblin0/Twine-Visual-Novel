@@ -12,11 +12,62 @@
 }
 
 
-:: Reply {"position":"1000,400","size":"100,100"}
-General Kenobi
-''Bold gsdgsdgdsgsdgsdgsdg Text''
+:: \ Attack\  {"position":"1400,600","size":"100,100"}
+You got up in a hurry and ran towards the silhouette. Before you could ever reach tou the silhouette, you Felt an immense pain on the side of your head and fell to the ground.
+
+[[ ... | Ending ]]
+
+
+:: \ Ending\  {"position":"2050,400","size":"100,100"}
+
+
+
+:: \ Esccape Attempt {"position":"1600,425","size":"100,100"}
+
+
+
+:: \ Run {"position":"1200,400","size":"100,100"}
+You are fast, but not careful. you tripped and fell. When you looked behind you saw a large silhouette approaching you.
+
+[[ Say nothing | Silence ]]
+[[ Get up and attack | Attack ]]
+
+
+:: \ Silence\  {"position":"1400,300","size":"100,100"}
+You watched the silhouette approach you in silence. You see the man carrying a big piece of wood. As the huge piece of wood was raised all the way up, he suddenly stopped. This might be your chance...
+
+[[ Try to escape | Esccape Attempt]]
+
+[[ Try to see who it is | Vision ]]
+
+
+
+
+:: \ Vision\  {"position":"1600,300","size":"100,100"}
+You rubbed your eyes to see who is behind the silhouette.
+
+
+:: \ Weapon\  {"position":"1200,200","size":"100,100"}
+You reached down quickly to get a shard of glass but ass soon as you reached for it, you felt an immense pain behind your head.
+
+[[ ... | Ending ]]
+
+
+:: Investigate {"position":"1000,200","size":"100,100"}
+As you were slowly walking to investigate, you hear some steps walking towards you slowly.
+
+[[ Look around for a weapon | Weapon ]]
+[[ Run away | Run]]
 
 
 :: Start {"position":"800,400","size":"100,100"}
 
-''Hello there''
+You are walking around as usual, nothing to do. As you were walking towards the small market you always go to, you realize that the windows are shattered.
+[[Investigate->Investigate]]
+[[Walk away|Walk away]]
+
+
+:: Walk away {"position":"1000,575","size":"100,100"}
+After you started walking away you felt like somebody was watching you from a distance.
+
+[[ Start Running | Run]] 
