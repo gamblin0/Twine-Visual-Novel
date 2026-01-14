@@ -16,7 +16,7 @@
     "Ending": "green",
     "Start": "blue"
   },
-  "zoom": 1
+  "zoom": 0.6
 }
 
 
@@ -52,7 +52,7 @@ You left your apartment and went for a walk. Ater a while of walking, you saw a 
 
 
 :: \ Market [Event] {"position":"800,400","size":"100,100"}
-You started feeling uneasy after that situation, then continued walking aimlessly. You realized you had nothing for breakfast so you decide to go to your local market. As you were walking towards the small market you always go to, you realize that the windows are shattered.
+You started feeling uneasy after that situation, then continued walking aimlessly. You realized you had nothing for breakfast so you decide to go to your local market. As you were walking towards the small market you always go to, you realize that the windows were shattered.
 
 [[Investigate->Investigate]]
 [[Walk away|Walk away]]
