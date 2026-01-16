@@ -16,7 +16,7 @@
     "Ending": "green",
     "Start": "blue"
   },
-  "zoom": 0.6
+  "zoom": 1
 }
 
 
@@ -66,7 +66,7 @@ You were fast, but not careful. you tripped and fell. When you looked behind, yo
 
 
 :: \ Silence\  [Outcome Event] {"position":"1400,200","size":"100,100"}
-You watched the silhouette approach you in silence. You saw the man carrying a big piece of wood. As the huge piece of wood was raised all the way up, he suddenly stopped. This might be your chance...
+You watched the silhouette approach you in silence. You saw the man carrying a big piece of wood. As the huge piece of wood was almost raised all the way up, he suddenly stopped. This might be your chance...
 
 [[ Try to escape | Escape Attempt]]
 
@@ -76,7 +76,7 @@ You watched the silhouette approach you in silence. You saw the man carrying a b
 
 
 :: \ Vision\  [Outcome] {"position":"1600,400","size":"100,100"}
-You rubbed your eyes to see who the silhouette is. But the sun behind it was way too powerful. Your eyes weren't able to manage to adjust. 
+You rubbed your eyes to see who the silhouette is. But the street light above it was way too powerful. Your eyes weren't able to manage to adjust. 
 
 [[ ... |Ending]]
 
@@ -92,7 +92,7 @@ As the piece of wood came down at you, the time slowed down. You closed your eye
 
 
 :: Ending [Event] {"position":"1800,400","size":"100,100"}
-The silhouette slowly raised the wood for one last time...
+The silhouette slowly raised the wood in their hand for one last time...
 
 (text-colour:red)[[[ ... |Conclusion]]]
 
@@ -106,7 +106,7 @@ As you were walking to investigate, you heard some steps slowly walking towards 
 
 :: Start [Start] {"position":"200,400","size":"100,100"}
 
-It is a cloudy day as usual. You have nothing to do since you got fired from your job due to the nationwide lay-offs. You decide to take walk down your neighbourhood.
+It is a cloudy day as usual. You have nothing to do since you got fired from your job due to the nationwide lay-offs. You decide to take a walk down your neighbourhood.
 
 [[ Go for a walk | Kid]]
 
