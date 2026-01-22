@@ -1,0 +1,116 @@
+:: StoryTitle
+Mission
+
+
+:: StoryData
+{
+  "ifid": "0617D06B-5D60-40AF-9D1B-E588B3F14420",
+  "format": "Paloma",
+  "format-version": "1.1.3",
+  "start": "Woken up",
+  "zoom": 1
+}
+
+
+:: \ Get Ready {"position":"1400,500","size":"100,100"}
+--pick up the gun or not--
+
+
+[[ Pick up the gun | Where to Hide]]
+[[ I can't risk the whole mission | Head to the meeting]]
+
+
+:: \ Head to the meeting {"position":"1800,200","size":"100,100"}
+There is no need to risk the mission by taking the gun with you, the job is stressful enough. 
+
+Kay: Our ride is here, let's not waste any more time. 
+
+You looked at the mirror and took a long breath. It's time to go.
+
+[[ Head to the meeting point.  |Ride]]
+
+
+<% s.gotgun == "false" %>
+
+
+:: \ Jacket {"position":"1800,400","size":"100,100"}
+You asked Kay to duct tape the revolver to your back. After him taping it, you put your clothes back on. After taking a look at it in the mirror, you saw that the revolver was fully hidden.
+
+Kay: Ridfe's here, let's go. 
+
+<% s.choice = "jacket" %>
+
+[[ Head to the meeting point.  |Ride]]
+
+
+:: \ Pants {"position":"1800,600","size":"100,100"}
+You tucked the gun inside your pants, shouldn't be a problem if no one gets suspicious.
+
+Kay: Ride's here, let's just go. 
+
+<% s.choice = "pants" %>
+
+[[ Head to the meeting point.  |Ride]]
+
+
+:: \ Sock {"position":"1800,800","size":"100,100"}
+You tucked the revolver inside your sock and tightened it with your shoelaces. The revolver is now fully hidden
+
+Kay: Ride's here, let's get this going. 
+
+<% s.choice = "sock" %>
+[[ Head to the meeting point.  |Ride]]
+
+
+:: \ Where to Hide {"position":"1600,500","size":"100,100"}
+You had a feeling that something might happen, so you decided to pick up the gun. Now it's time to decide where you'll put it. The gun is  small revolver, you should be able to hide it easily. But you must think carefully, you don't want to get caught sneaking a gun to the meeting.
+
+[[ Hide it on your hip, it may allow you to access it quickly if things go south. | Pants]]
+
+[[ Hide it on your back under your jacket, it's cold outside they might not check there.  | Jacket]]
+
+[[ Hide it inside your sock on your ankle, it is well hidden under your baggy pants. | Sock]]
+
+
+<% s.gotgun = "true" %>
+
+
+:: Arrive {"position":"2600,500","size":"100,100"}
+
+
+
+:: Ride {"position":"2200,500","size":"100,100"}
+You get on an old looking, yet well taken care of car. The realize driver is long time servant of the Unnion. Talking to him may make him suspissious, but your relatinship with him might be helpful in future missions.
+
+[[ "It's an honor to meet a great compatriot like you, Morozev."  |Talk]]
+
+[[ Stay silent.  |Silent]]
+
+
+
+
+:: Silent {"position":"2400,300","size":"100,100"}
+You chose to stay silent, you donn't want  a mission of this caliber to fail because of some  small talk. Just focus on the mission and act natural.
+
+
+[[ Continue to the meeting point  |Arrive]]
+
+
+:: Talk {"position":"2400,700","size":"100,100"}
+Morozev: Keep all that talk for General Karakov, you'll need it.
+
+That answer shocks you. General Karakov wasn’t meant to attend this meeting. He was supposed to be elsewhere—enforcing outcomes with weapons, not negotiating their sale. 
+
+Things just got more intense. Stealing the documents will be way harder than expected. <% if (s.gotgun == "true") { %>But, eliminating a man like him might mean the end of the war.<% } %>
+
+[[ Continue to the meeting point  |Arrive]]
+
+
+
+
+:: Woken up {"position":"1075,500","size":"100,100"}
+-gets woken up-
+-world building- 
+
+[[ Get ready | Get Ready]]
+
