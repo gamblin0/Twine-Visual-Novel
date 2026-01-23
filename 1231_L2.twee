@@ -364,14 +364,19 @@ After some time you arrive to a warehouse, it looks old. The doors open. Inside 
 
 Security is tight but routine. No more than 6 people. IDs are checked. And now the check for any unwanted items.
 
+<% if (s.gotgun == "false") { %>The security started patting both of you down. He couldn't find anything.  He nodded towards the dealer with his head and said "You may continue.'<% } %>
+
+
 <% if (s.choice == "pants") { %>The security started patting both of you down. Without much searching, he felt the gun tucked in your pants. He mentioned the no gun policy and requested the gun from you. You had no choice but to give it to him. Then he put your gun on a tray next to him.<% } %>
 
 <% if (s.choice == "jacket") { %>The security started patting both of you down. Without much searching, he felt the gun taped behind your back. He reched in and ripped the gun from your back. He mentioned the no gun policy and took your gun. Then he put your gun on a tray next to him. You could feel that he felt suspicious.<% } %>
 
-<% if (s.choice == "sock") { %>The security started patting both of you down. He didn't pt you down to your ankles. He pointed to the dealer with his head and said "You may continue."<% } %>
+<% if (s.choice == "sock") { %>The security started patting both of you down. He didn't pat you down to your ankles. He nodded towards the dealer with his head and said "You may continue."<% } %>
 
 
 <% if (s.choice == "sock"){ %>[[Head towards the meeting table | Continue]]<% } %>
+
+<% if (s.gotgun == "false"){ %>[[Head towards the meeting table | Continue]]<% } %>
 
 
 <% if (s.choice == "pants") { %>[[ Try to steal the gun from the tray | Try to steal P]]<% } %>
