@@ -59,7 +59,9 @@ Then the doors open again.
 
 <% if (s.karakov == "known") { %>[[ Must be Karakov | Karakov Arrives]]<% } %>
 
+
 <% if (s.karakov == "unknown") { %>[[ Look back to see who it is | Karakov Arrives]]<% } %>
+
 
 [[Pay no attention | Karakov Arrives]]
 
@@ -100,20 +102,24 @@ You: So are you.
 
 Thomas doesn’t deny it.
 
-Your eyes linger on the revolver restinng on the table at the corner of the room. You've carried it through other nights, other rooms. Not because it was part of the plan, but because plans didn’t always survive contact. 
+Your eyes linger on the revolver resting on the table at the corner of the room. You've carried it through other nights, other rooms. Not because it was part of the plan, but because plans didn’t always survive contact. 
 
 Thomas notices the look.
 
-Thomas: You know there is a strict no gun policy for this meeting. The meeting works if it stays simple.  
+Thomas: You know there is a no gun policy for this meeting. The meeting works if it stays simple.  
 
-Thomas is right, it is  big risk to take the gun woth you.
+You: It is normal for soldiers to have guns with them, I don't think they will search throughly either.
+
+You knowThomas is right, it is a risk to take the gun with you.
+
+But there surely will be a security checkpoint. If they find it, you can just hand the gun over to them it won't be a problem.
 
 Nothing feels wrong, but you can't deny your gut feeling of something may go wrong.
 
 
-[[ Pick up the gun | Where to Hide]]
+[[ Pick up and hide the gun | Where to Hide]]
 
-[[ I can't risk the whole mission | Head to the meeting]]
+[[ I can't take the risk | Head to the meeting]]
 
 
 :: \ Grab Attempt {"position":"3600,400","size":"100,100"}
@@ -138,7 +144,7 @@ You looked at the mirror and took a long breath. It's time to go.
 [[ Head to the meeting point.  |Ride]]
 
 
-<% s.gotgun == "false" %>
+<% s.gotgun = "false" %>
 
 
 :: \ Jacket {"position":"1800,400","size":"100,100"}
@@ -167,6 +173,7 @@ Karakov: Ah… I was wondering when we’d meet, General Alexei. Curiosity has i
 Alexei: General Karakov. I wasn’t expecting you tonight. It’s a privilege to have you here. Indeed, General Karakov. Ilya has proven himself more than capable.
 
 [[Nod your head <% s.interaction = "false" %> | Plan]]
+
 [["It is an honor to be in your presence General." <% s.interaction = "true" %> | Plan]]
 
 
@@ -280,7 +287,7 @@ Alexei opens the door. You step through first, glancing back once. The hangar is
 You disappear into the alleys of the night. Quiet. Safe. For now.
 
 
-:: \ Try to steal J {"position":"2800,800","size":"100,100"}
+:: \ Try to steal J {"position":"2800,700","size":"100,100"}
 You asked Thomas to engage attention from the guards so you can steal your gun back.
 
 Thomas started asking guards their purpose as General Alexei. The guards were already suspicious of you so they were still paying attention to your moves. You weren't able to get your gun back. 
@@ -304,7 +311,7 @@ Then the doors open again.
 [[Pay no attention | Karakov Arrives]]
 
 
-:: \ Try to steal P {"position":"2800,200","size":"100,100"}
+:: \ Try to steal P {"position":"2800,300","size":"100,100"}
 You asked Thomas to engage attention from the guards so you can steal your gun back.
 
 Thomas started asking guards their purpose as General Alexei. While the guards were getting interrogated, you were managed to get your gun back from the tray.
@@ -318,6 +325,7 @@ The warehouse owner clears his throat, arranging the documents on the table. Con
 Then the doors open again.
 
 <% if (s.karakov == "known") { %>[[ Must be Karakov | Karakov Arrives]]<% } %>
+
 
 <% if (s.karakov == "unknown") { %>[[ Look back to see who it is | Karakov Arrives]]<% } %>
 
@@ -376,6 +384,7 @@ Security is tight but routine. No more than 6 people. IDs are checked. And now t
 
 <% if (s.choice == "sock"){ %>[[Head towards the meeting table | Continue]]<% } %>
 
+
 <% if (s.gotgun == "false"){ %>[[Head towards the meeting table | Continue]]<% } %>
 
 
@@ -389,7 +398,7 @@ Security is tight but routine. No more than 6 people. IDs are checked. And now t
 :: Ride {"position":"2200,500","size":"100,100"}
 You get on an old looking, yet well taken care of car. 
 
-After getting in, you realize the driver is long time servant of the Union. Talking to him may make him suspicious, but your relationship with him might be helpful in future missions.
+After getting in, you realize the driver is a long time servant of the Union. Talking to him may make him suspicious, but your relationship with him might be helpful in future missions.
 
 [[ "It's an honor to meet a great compatriot like you, Morozev."  |Talk]]
 
@@ -399,7 +408,7 @@ After getting in, you realize the driver is long time servant of the Union. Talk
 
 
 :: Silent {"position":"2400,300","size":"100,100"}
-You chose to stay silent, you donn't want  a mission of this caliber to fail because of some  small talk. Just focus on the mission and act natural.
+You chose to stay silent, you don't want  a mission of this caliber to fail because of some  small talk. Just focus on the mission and act natural.
 
 <% s.karakov = "unknown" %>
 
