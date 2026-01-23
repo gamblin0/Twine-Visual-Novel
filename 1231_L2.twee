@@ -12,7 +12,7 @@ Mission
 }
 
 
-:: \ Clear the warehouse {"position":"3700,700","size":"100,100"}
+:: \ Clear the warehouse {"position":"3900,700","size":"100,100"}
 The shot that felled Karakov echoes, but not enough.
 
 Security guards emerge. They weren’t expecting Karakov to be killed, but they recognize his presence now. Weapons rise.
@@ -48,7 +48,23 @@ You disappear into the night.
 And the world, for a moment, feels unbearably quiet.
 
 
-:: \ Escape {"position":"3700,500","size":"100,100"}
+:: \ Continue {"position":"2800,500","size":"100,100"}
+ You started walking towards the table the meeting will be held in the middle of the warehouse. 
+ 
+ The warehouse smells faintly of polished wood and smoke. Everyone here knows their place.
+
+The dealer clears his throat, arranging the documents on the table. Conversation is about to start.
+
+Then the doors open again.
+
+<% if (s.karakov == "known") { %>[[ Must be Karakov | Karakov Arrives]]<% } %>
+
+<% if (s.karakov == "unknown") { %>[[ Look back to see who it is | Karakov Arrives]]<% } %>
+
+[[Pay no attention | Karakov Arrives]]
+
+
+:: \ Escape {"position":"3900,500","size":"100,100"}
 Thomas grabs your arm and pulls you sideways as guards shout. Bullets slam into the table where you were standing seconds ago.
 
 “Move,” he says, low, sharp.
@@ -122,7 +138,7 @@ Kay: Ridfe's here, let's go.
 [[ Head to the meeting point.  |Ride]]
 
 
-:: \ Karakov Arrives {"position":"2800,500","size":"100,100"}
+:: \ Karakov Arrives {"position":"3000,500","size":"100,100"}
 The doors of the warehouse opens.
 
 The room falls silent.
@@ -151,7 +167,7 @@ Kay: Ride's here, let's just go.
 [[ Head to the meeting point.  |Ride]]
 
 
-:: \ Plan {"position":"3000,500","size":"100,100"}
+:: \ Plan {"position":"3200,500","size":"100,100"}
 Krakov turns back and takes a look at the documents.
 
 He studies them for a moment, then looks up, unfazed.
@@ -181,12 +197,14 @@ Thomas finally shifts his gaze. Not to Karakov. To you...
 
 
 
-<% if (s.sneaked == "true") { %>[[ Reach for your gun | Shoot]]<% } %>
+<% if (s.choice == "sock") { %>[[ Reach for your gun | Shoot]]<% } %>
+
+<%if ( s.stole == "true") { %>[[ Reach for your gun | Shoot]]<% } %>
 
 [[ Stick to the plan | wait for Karakov to leave]]
 
 
-:: \ Shoot {"position":"3200,600","size":"100,100"}
+:: \ Shoot {"position":"3400,600","size":"100,100"}
 For a brief moment, Thomas's expression changes, not panic, not command. Recognition.
 As if he understands what choice might already be forming. And this time, he doesn’t stop it.
 
@@ -208,7 +226,7 @@ The hangar feels impossibly quiet. Too quiet.
 
 You’ve done it. But the room is far from safe.
 
-[[Escape | Escape]]
+[[Try to Escape | Escape]]
 
 [[Try to eliminate all the threats | Clear the warehouse]]
 
@@ -225,7 +243,7 @@ Kay: Ride's here, let's get this going.
 [[ Head to the meeting point.  |Ride]]
 
 
-:: \ Tour {"position":"3700,300","size":"100,100"}
+:: \ Tour {"position":"3900,300","size":"100,100"}
 Thomas: Perhaps… a quick tour of the containers, Ilya? It’s part of my inspection duties.
 
 The guards glance at you but don’t stop you. Their focus remains on Karakov’s retreating figure.
@@ -245,6 +263,52 @@ Alexei opens the door. You step through first, glancing back once. The hangar is
 You disappear into the alleys of the night. Quiet. Safe. For now.
 
 
+:: \ Try to steal J {"position":"2800,800","size":"100,100"}
+You asked Thomas to engage attention from the guards so you can steal your gun back.
+
+Thomas started asking guards their purpose as General Alexei. The guards were already suspicious of you so they were still paying attention to your moves. You weren't able to get your gun back. You started walking towards the table the meeting will be held in the middle of the warehouse
+
+You started walking towards the table the meeting will be held in the middle of the warehouse. 
+ 
+ The warehouse smells faintly of polished wood and smoke. Everyone here knows their place.
+
+The dealer clears his throat, arranging the documents on the table. Conversation is about to start.
+
+Then the doors open again.
+
+<% if (s.karakov == "known") { %>[[ Must be Karakov | Karakov Arrives]]<% } %>
+
+<% if (s.karakov == "unknown") { %>[[ Look back to see who it is | Karakov Arrives]]<% } %>
+
+<% s.stole = "false" %>
+
+[[Pay no attention | Karakov Arrives]]
+
+
+:: \ Try to steal P {"position":"2800,200","size":"100,100"}
+You asked Thomas to engage attention from the guards so you can steal your gun back.
+
+Thomas started asking guards their purpose as General Alexei. While the guards were getting interrogated, you were managed to get your gun back from the tray.
+
+ You started walking towards the table the meeting will be held in the middle of the warehouse. 
+ 
+ The warehouse smells faintly of polished wood and smoke. Everyone here knows their place.
+
+The dealer clears his throat, arranging the documents on the table. Conversation is about to start.
+
+Then the doors open again.
+
+<% if (s.karakov == "known") { %>[[ Must be Karakov | Karakov Arrives]]<% } %>
+
+<% if (s.karakov == "unknown") { %>[[ Look back to see who it is | Karakov Arrives]]<% } %>
+
+<% s.stole = "true" %>
+
+
+
+[[Pay no attention | Karakov Arrives]]
+
+
 :: \ Where to Hide {"position":"1600,500","size":"100,100"}
 You had a feeling that something might happen, so you decided to pick up the gun. Now it's time to decide where you'll put it. The gun is  small revolver, you should be able to hide it easily. But you must think carefully, you don't want to get caught sneaking a gun to the meeting.
 
@@ -258,7 +322,7 @@ You had a feeling that something might happen, so you decided to pick up the gun
 <% s.gotgun = "true" %>
 
 
-:: \ wait for Karakov to leave {"position":"3200,400","size":"100,100"}
+:: \ wait for Karakov to leave {"position":"3400,400","size":"100,100"}
 Karakov moves toward the exit. The guards follow his every step, their attention fully on him.
 
 Thomas leans slightly, voice low but casual,
@@ -275,29 +339,31 @@ Thomas: Stick to the plan, I request a tour and we finnish it off right then and
 
 
 :: Arrive {"position":"2600,500","size":"100,100"}
-After some time you rrive to a warehouse, it looks old. The doors open. Inside there are hundreds of containers, all seeming to have thousands of kilos of ammunnatio and weapons.
+After some time you arrive to a warehouse, it looks old. The doors open. Inside there are hundreds of containers, all seeming to have thousands of kilos of ammunnatio and weapons.
 
 Security is tight but routine. No more than 6 people. IDs are checked. And now the check for any unwanted items.
 
-<% if (s.choice == "pants") (s.sneaked = "false") { %>The security started patting both of you down. Without much searching, he felt the gun tucked in your pants. He mentioned the no gun policy and requested the gun from you. You had no choice but to give it to him.<% } %>
+<% if (s.choice == "pants") { %>The security started patting both of you down. Without much searching, he felt the gun tucked in your pants. He mentioned the no gun policy and requested the gun from you. You had no choice but to give it to him. Then he put your gun on a tray next to him.<% } %>
 
-<% if (s.choice == "Jacket") (s.sneaked = "false") { %>The security started patting both of you down. Without much searching, he felt the gun taped behind your back. He reched in and ripped the gun from your back. He mentioned the no gun policy and took your gun. You could feel that he felt suspicious.<% } %>
+<% if (s.choice == "jacket") { %>The security started patting both of you down. Without much searching, he felt the gun taped behind your back. He reched in and ripped the gun from your back. He mentioned the no gun policy and took your gun. Then he put your gun on a tray next to him. You could feel that he felt suspicious.<% } %>
 
-<% if (s.choice == "Socks") (s.sneaked = "true") { %>The security started patting both of you down. He didn't pt you down to your ankles. He pointed to the dealer with his head and said "You may continue.<% } %>
+<% if (s.choice == "sock") { %>The security started patting both of you down. He didn't pt you down to your ankles. He pointed to the dealer with his head and said "You may continue."<% } %>
 
-The wrehouse smells faintly of polished wood and smoke. Everyone here knows their place.
 
-The dealer clears his throat, arranging the documents on the table. Conversation is about to start.
+<% if (s.choice == "sock"){ %>[[Head towards the meeting table | Continue]]<% } %>
 
-Then the doors open again.
 
-<% if (s.karakov == "known") { %>[[ Must be Karakov | Karakov Arrives]]<% } %>
+<% if (s.choice == "pants") { %>[[ Try to steal the gun from the tray | Try to steal P]]<% } %>
 
-<% if (s.karakov == "unknown") { %>[[ Look back to see who it is | Karakov Arrives]]<% } %>
+<% if (s.choice == "jacket") { %>[[ Try to steal the gun from the tray | Try to steal J]]<% } %>
+
+
 
 
 :: Ride {"position":"2200,500","size":"100,100"}
-You get on an old looking, yet well taken care of car. The realize driver is long time servant of the Unnion. Talking to him may make him suspissious, but your relatinship with him might be helpful in future missions.
+You get on an old looking, yet well taken care of car. 
+
+After getting in, you realize the driver is long time servant of the Unnion. Talking to him may make him suspissious, but your relatinship with him might be helpful in future missions.
 
 [[ "It's an honor to meet a great compatriot like you, Morozev."  |Talk]]
 
