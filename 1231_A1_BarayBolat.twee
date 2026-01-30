@@ -73,7 +73,7 @@ Then the doors open again.
 :: \ Escape {"position":"4300,700","size":"100,100"}
 (if: $attempt is "failed")[Thomas pushes the warehouse owner back. Warehouse owner alerts the guards.]
 
-Thomas grabs your arm and pulls you sideways as guards shout. Bullets slam into the table where you were standing seconds ago.
+(if: $stress < 11)[Thomas grabs your arm and pulls you sideways as guards shout. Bullets slam into the table where you were standing seconds ago.
 
 “Move,” he says, low, sharp.
 
@@ -95,7 +95,17 @@ Thomas falls into step beside you, silent. No words. No relief. Only the knowled
 
 You disappear into the night.
 
-And the world, for a moment, feels unbearably quiet.
+And the world, for a moment, feels unbearably quiet.]
+
+(if: $stress > 10)[Thomas grabs your arm and yanks you aside, but your foot catches a loose plank. You stumble, almost falling as bullets slam the table you had been standing by.
+
+Metal screeches as you land against a container wall. Sparks scatter as a round clips the edge above you.
+
+Alexei moves forward, but the stumble slows him. Thomas shouts something—then slams the forklift forward, but your hesitation nearly blocks the path. The machine tips slightly, a loud metallic crash reverberating through the warehouse.
+
+You finally reach the backdoor, but it sticks briefly under your shoulder. A clatter sounds—distant, but enough to turn heads somewhere in the hangar.
+
+The yard is empty. The alley seems silent. But your heart hammers, ears ringing. Thomas falls beside you, chest heaving, eyes narrowed. You are safe, for now.]
 
 <img src="images/night.png">
 
@@ -514,9 +524,11 @@ The shot cracks like thunder. Guards freeze, unsure, hesitant. Even the warehous
 
 The hangar feels impossibly quiet. Too quiet.
 
-You’ve done it. But the room is far from safe.][(set: $achieved to "true")]
+You’ve done it. But the room is far from safe.]
 
-(if: $stress < 10)[Your hand goes to your gun.
+(if: $stress < 11)[(set: $achieved to "true")]
+
+(if: $stress > 10)[Your hand goes to your gun.
 
 You’ve done this before.
 You know this weight.
@@ -535,7 +547,8 @@ Then amused.
 
 He ducks behind the table as guards shout.
 
-Karakov: Ah. So that’s how tonight ends.][(set: $achieved to "false")
+Karakov: Ah. So that’s how tonight ends.]
+(if: $stress > 10)[(set: $achieved to "false")
 
 
 
@@ -585,13 +598,11 @@ Whatever judgment he makes, he keeps it to himself. The meeting continues, but y
 
 Warehouse owner released your arm. After pretending to check the documents, you gave them back to the dealer. ]
 
-
-
 Thomas: Perhaps… a quick tour of the containers, Ilya? It’s part of my inspection duties.
 
 The guards glance at you but don’t stop you. Their focus remains on Karakov’s retreating figure.
 
-You nod, moving with Thomas and the dealer down the narrow alleys between stacked containers. Shadows stretch around you. Silence, except for the distant echo of footsteps. The dealer brings the documennts with himself, in order to assure you that everything is as it should be.
+(if: $stress < 11)[You nod, moving with Thomas and the dealer down the narrow alleys between stacked containers. Shadows stretch around you. Silence, except for the distant echo of footsteps. The dealer brings the documennts with himself, in order to assure you that everything is as it should be.
 
 You reach a secluded spot. With a swift motion, Thomas snatches the documents from the warehouse owner’s hands. The man freezes, stunned. Before he can react, you disarm him and pin him quietly against the container wall.
 
@@ -603,8 +614,26 @@ You slip between the containers, moving toward the backdoor at the far end. Outs
 
 Alexei opens the door. You step through first, glancing back once. The hangar is still, the deal disrupted, the documents gone, and the trader incapacitated.
 
-You disappear into the alleys of the night. Quiet. Safe. For now.
+You disappear into the alleys of the night. Quiet. Safe. For now.]
+
+(if: $stress > 10)[You follow Thomas and the dealer down the alleys of stacked containers, but your hands shake slightly and your steps scrape against metal.
+
+Thomas snatches the documents, but the sudden noise catches the dealer off guard.
+
+He reacts—spinning, trying to pull the papers back. In your panic, you misjudge your movement and the dealer slaps your wrist. The papers flutter to the ground.
+
+A clatter echoes.
+
+The trader freezes, eyes wide. You lunge, trying to pin him, but your grip falters. He struggles harder than expected, shoving you against the container wall. The shadowed corridor feels tighter, the silence louder.
+
+Finally, Thomas manages to subdue the dealer, but the papers are slightly crumpled, some documents almost slipping from the bundle.
+
+Outside, the backdoor is just ahead, but you’re both breathing hard, adrenaline pulsing, aware that any noise could bring guards.
+
+You slip into the alley, documents in hand, but the trader’s muffled protests echo behind you. Safe? Maybe. But not clean.]
 <img src="images/night.png">
+
+
 
 
 :: \ Try to steal J {"position":"2600,900","size":"100,100"}
