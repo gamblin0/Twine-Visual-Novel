@@ -1,131 +1,854 @@
 :: StoryTitle
-1231
+Mission
 
 
 :: StoryData
 {
-  "ifid": "AF94153E-B852-4285-AC30-3260652710A2",
-  "format": "Paloma",
-  "format-version": "1.1.3",
+  "ifid": "0617D06B-5D60-40AF-9D1B-E588B3F14420",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
   "start": "Start",
-  "tag-colors": {
-    "Event": "orange",
-    "Pacifist": "blue",
-    "Risky": "orange",
-    "Outcome": "red",
-    "Ending": "green",
-    "Start": "blue"
-  },
-  "zoom": 1
+  "zoom": 0.6
 }
 
 
-:: \ Attack\  [Outcome] {"position":"1400,600","size":"100,100"}
-You got up in a hurry and ran towards the silhouette. When you were about to hit the silhouette, you got tackled and fell again.
+:: \ Clear the warehouse {"position":"4300,900","size":"100,100"}
+The shot that felled Karakov echoes, but not enough.
 
-[[ Look up | Vision ]]
+Security guards emerge. They weren’t expecting Karakov to be killed, but they recognize his presence now. Weapons rise.
 
+Thomas’s eyes flick to the fallen general’s sidearm. He could get in with a gun. He is the head general, after all.
 
-:: \ Escape Attempt [Outcome] {"position":"1700,200","size":"100,100"}
-You quickly got up and tried to escape. But, the silhouette caught you from your ankle. You looked back, with your eyes full of fear. 
+He grabs it. Cold metal in hand. His voice is sharp.
 
-[[ ... |Ending]]
+Thomas: Move!
 
+The guards hesitate, just long enough.
 
-:: \ Help [Outcome] {"position":"600,200","size":"100,100"}
-You walked up to the kid and asked " Are you good?". Kid stopped crying, looked up and said "I don't need your help!".
+Gunfire erupts. You fire, Thomas fires, containers shudder under the impacts. Guards fall. Others dive for cover, shouting. Chaos spreads like wildfire.
 
-	<% s.helped = "true" %>
+You take a corner, reloading quickly, when a shot cracks from the upper catwalk.
 
-[[ Continue walking | Market]]
+Alexei jerks, caught mid-step. You see that he got shot from his chest. He staggers. His eyes meet yours, wide, almost apologetic, then dim.
 
+You: No!..
 
-:: \ Ignore [Outcome] {"position":"600,600","size":"100,100"}
-You ignored the crying kid. As you were walking away, the crying has stopped. You were glad you didn't approach the kid.
+He falls against the cold metal of a container, gun sliding from his grasp.
 
-<% s.helped = "false" %>
+The warehouse feels impossibly quiet, except for the distant shouts of the remaining guards.
 
-[[ Continue walking | Market]]
+You realize, with a sinking certainty, that the mission has just changed. Without Alexei, the weight of every decision—the choice you made, the gun, Karakov—lands squarely on you.
 
+You find a backdoor at the far end of the warehouse, you doesn’t hesitate. You shoulder it open and cold night air rushes in.
 
-:: \ Kid [Event] {"position":"400,400","size":"100,100"}
-You left your apartment and went for a walk. Ater a while of walking, you saw a kid crying in the middle of an alley.
+The yard is empty. Shadows stretch between the containers, silent and still.
 
-[[ It's not my problem | Ignore]]
-[[ Try to help | Help]]
+You disappear into the night.
 
+And the world, for a moment, feels unbearably quiet.
 
-:: \ Market [Event] {"position":"800,400","size":"100,100"}
-You started feeling uneasy after that situation, then continued walking aimlessly. You realized you had nothing for breakfast so you decide to go to your local market. As you were walking towards the small market you always go to, you realize that the windows were shattered.
-
+<img src="images/night.png">
 
 
-[[Investigate->Investigate]]
-[[Walk away|Walk away]]
+:: \ Continue {"position":"2600,700","size":"100,100"}
+ You started walking towards the table in the middle of all the containers. 
+ 
+ The warehouse smells faintly of polished wood and smoke. Everyone here knows their place.
 
+The warehouse owner clears his throat, arranging the documents on the table. Conversation is about to start.
 
-:: \ Run [Event] {"position":"1200,400","size":"100,100"}
-You were fast, but not careful. you tripped and fell. When you looked behind, you saw a large silhouette approaching you.
-
-[[ Say nothing | Silence ]]
-[[ Get up and attack | Attack ]]
-
-
-:: \ Silence\  [Outcome Event] {"position":"1400,200","size":"100,100"}
-You watched the silhouette approach you in silence. You saw the man carrying a big piece of wood. As the huge piece of wood was almost raised all the way up, he suddenly stopped. This might be your chance...
-
-[[ Try to escape | Escape Attempt]]
-
-[[ Try to see who it is | Vision ]]
+Then the doors open again.
 
 
 
-
-:: \ Vision\  [Outcome] {"position":"1600,400","size":"100,100"}
-You rubbed your eyes to see who the silhouette is. But the street light above it was way too powerful. Your eyes weren't able to manage to adjust. 
-
-<% if (s.helped == "true") { %>Sillhouette: You helped the kid, too bad I gotta kill you...<% } %>
-
-<% if (s.helped == "false") { %>Sillhouette: Who doesn't help a crying kid, you monster?! I will be doing everyone a favor with doing this!<% } %>
-
-[[ ... |Ending]]
+(if: $karakov is "true")[[ Stick to Morozev's instructions | Karakov Arrives]]
+(if: $choice is "jacket")[(set: $gotgun to "false")]
+(if: $choice is "pants")[(set: $gotgun to "false")]
+(if: $karakov is "false")[[ Look back to see who it is | Karakov first glance]]
 
 
-:: \ Weapon\  [Outcome] {"position":"1200,200","size":"100,100"}
-You reached down quickly to get a shard of glass but as soon as you reached for it, something hit the shard out of your hand. 
-
-[[ Try to escape | Run]]
+[[Take the chance to investigate the files | Karakov detects]]
 
 
-:: Conclusion [Ending] {"position":"2000,400","size":"100,100"}
-As the piece of wood came down at you, the time slowed down. You closed your eyes and accepted your faith. When you finally opened your eyes, you found yourseld on a hill at a sunny day. Your struggle was no more, you were finally in peace...
+:: \ Escape {"position":"4300,700","size":"100,100"}
+(if: $attempt is "failed")[Thomas pushes the warehouse owner back. Warehouse owner alerts the guards.]
+
+Thomas grabs your arm and pulls you sideways as guards shout. Bullets slam into the table where you were standing seconds ago.
+
+“Move,” he says, low, sharp.
+
+You dive between two stacked containers. The narrow corridor swallows you in shadow. Metal screams as rounds strike the walls, sparks bursting in the dark.
+
+Alexei doesn’t slow down. He knows the layout, or pretends he does.
+
+You cut left. Then right. The containers form a maze, blocking sightlines, swallowing sound.
+
+A forklift sits abandoned ahead.
+
+Thomas shoves it forward. The machine crashes sideways, sealing the passage behind you. Shouts turn distant, confused.
+
+You find a backdoor at the far end of the warehouse, you doesn’t hesitate. You shoulder it open and cold night air rushes in.
+
+The yard is empty. Shadows stretch between the containers, silent and still.
+
+Thomas falls into step beside you, silent. No words. No relief. Only the knowledge that what just happened cannot be undone.
+
+You disappear into the night.
+
+And the world, for a moment, feels unbearably quiet.
+
+<img src="images/night.png">
 
 
-:: Ending [Event] {"position":"1800,400","size":"100,100"}
-The silhouette slowly raised the wood in their hand for one last time...
+:: \ Get Ready {"position":"1400,700","size":"100,100"}
+You straighten your uniform. Everything is in place. It has to be.
+Across from you, Thomas finishes adjusting his gloves, movements precise.
 
-[[ ... |Conclusion]]
+(text-colour:blue)[Thomas:] You’re tense.
+
+(text-colour:lime)[You:] So are you.
+
+Thomas doesn’t deny it.
+
+Your eyes linger on the revolver resting on the table at the corner of the room. You’ve carried it through other nights, other rooms. Not because it was part of the plan, but because plans didn’t always survive contact.
+
+Thomas notices the look.
+
+(text-colour:blue)[Thomas:] You know there is a no-gun policy for this meeting. It works if it stays simple.
+
+(text-colour:lime)[You:] We are not just any soldier. We’re an important part of the Union. Us carrying guns isn’t unusual. It’s a precaution.
+
+Thomas exhales slowly. Not approval—but not refusal.
+
+(text-colour:blue)[Thomas:] There will be a security checkpoint. If they find it, you hand it over. No questions. No consequences.
+
+He meets your eyes.
+
+(text-colour:blue)[Thomas:] But if something goes wrong before that… you’ll be glad you had it.
+
+Nothing feels wrong. Not yet.
+Still, that familiar pressure sits in your chest—the sense that tonight isn’t meant to stay simple.
+
+<img src="images/gun.png">
+
+[[ Pick up and hide the gun | Where to Hide]]
+
+[[ I can't take the risk | Head to the meeting]]
 
 
-:: Investigate [Outcome Event] {"position":"1000,200","size":"100,100"}
-As you were walking to investigate, you heard some steps slowly walking towards you.
+:: \ Grab Attempt {"position":"4100,600","size":"100,100"}
+You tried to quickly grab the files laying on the table. The waarehouse owner realized your move and caught your hand. 
 
-<% s.brave = "true" %>
+Warehouse owner: What do you think you are doing Exactly?
 
-[[ Look around for a weapon | Weapon ]]
-[[ Run away | Run]]
+(set: $stress to $stress + 5)
 
+[[Request help from Thomas | Escape]]
 
-:: Start [Start] {"position":"200,400","size":"100,100"}
+[[Leave it up to Thomas | Tour]]
 
-It is a cloudy day as usual. You have nothing to do since you got fired from your job due to the nationwide lay-offs. You decide to take a walk down your neighbourhood.
-
-[[ Go for a walk | Kid]]
+(set: $attempt to "failed")
 
 
-:: Walk away [Outcome] {"position":"1000,600","size":"100,100"}
-After you started walking away you felt like somebody was watching you from a distance.
+:: \ Head to the meeting {"position":"1800,400","size":"100,100"}
+There is no need to risk the mission by taking the gun with you, the job is stressful enough. 
 
-<% s.brave = "false" %>
+Thomas: Our ride is here, let's not waste any more time. 
 
-[[ Start Running | Run]] 
+You looked at the mirror and took a long breath. It's time to go.
+
+[[ Head to the meeting point.  |Ride]]
+
+
+(set: $gotgun to "false")
+
+
+:: \ Honored {"position":"3400,600","size":"100,100"}
+You speak.
+
+Your voice is respectful. Controlled. Clear.
+
+The words land softly in the quiet room.
+
+(text-colour:red)[Karakov]’s smile widens — not pleased, not offended. Interested.
+
+He steps closer by a single pace.
+
+(text-colour:red)[Karakov]: Honor is a language spoken by those who still believe in it.
+
+He turns away almost immediately, already losing interest.
+
+The conversation moves on, but you feel the weight of his attention settle more firmly than before.
+
+(set: $stress to $stress + 5)
+
+[[ Continue | Plan]] 
+
+
+:: \ Jacket {"position":"1800,600","size":"100,100"}
+You asked Kay to duct tape the revolver to your back. After him taping it, you put your clothes back on. After taking a look at it in the mirror, you saw that the revolver was fully hidden.
+
+Thomas: Ride's here, let's go. 
+
+
+
+[[ Head to the meeting point.  |Ride]]
+
+(set: $choice to "jacket")
+
+
+:: \ Karakov Arrives {"position":"3200,600","size":"100,100"}
+The doors of the warehouse opens.
+
+The room falls silent.
+
+Warehouse owner: General Karakov!.. your presence is most welcome. Everything is ready.
+
+(text-colour:red)[Karakov] steps in. 
+
+(if: $karakov is "false")[ (text-colour:red)[General Karakov] wasn't supposed to be here. He was supposed to be elsewhere—enforcing outcomes with weapons, not negotiating their sale. He is the head of the military of the UNN after all.]
+
+The soft echo of his polished shoes on the concrete floor marks each deliberate step. He walks to the table and lets his fingers brush the documents. Then, almost casually, he turns his head toward (text-colour:blue)[Thomas].
+
+A smile touches his lips.
+
+(text-colour:red)[Karakov]: Ah… I was wondering when we’d meet, (text-colour:blue)[General Alexei]. Curiosity has its own patience. And that must be your right-hand man, (text-colour:lime)[Ilya Petrov]. I do hope he is s reliable as people claim.
+
+(text-colour:blue)[Alexei]: (text-colour:red)[General Karakov]. I wasn’t expecting you tonight. It’s a privilege to have you here. Indeed, (text-colour:red)[General Karakov]. (text-colour:lime)[Ilya] has proven himself more than capable.
+
+[[Nod your head | Nod]]
+
+[[Stand still | Still]]
+
+[["It is an honor to be in your presence General."  | Honored]]
+
+
+:: \ Karakov Lives {"position":"4300,1100","size":"100,100"}
+The room settles faster than it should.
+
+Guards move into position with practiced ease. No shouting. No confusion. Just discipline snapping back into place.
+
+Karakov steps forward.
+
+He looks at the fallen gun on the floor, then at you, then at Thomas.
+
+There is no anger in his expression.
+
+Only clarity.
+
+Karakov:
+You disappoint me.
+
+He gestures once. The guards stop.
+
+Karakov reaches down and picks up his weapon himself. He checks the chamber, adjusts his grip — unhurried, instructional, as if showing how it should have been done.
+
+He meets Thomas’s eyes first.
+
+Karakov:
+You should have known better.
+
+A shot rings out.
+
+Thomas collapses without a sound.
+
+The world narrows. Your ears ring. Your body refuses to move.
+
+Karakov turns to you.
+
+For the first time, he steps close enough that you can smell the oil on his gloves.
+
+Karakov:
+Wars aren’t ended by conviction.
+They’re ended by those who don’t hesitate.
+
+He raises the gun.
+
+There is no dramatic pause.
+No last words.
+
+Just a final correction.
+
+
+:: \ Karakov Right way {"position":"3200,400","size":"100,100"}
+The soft echo of his polished shoes on the concrete floor marks each deliberate step. He walks to the table and lets his fingers brush the documents. Then, almost casually, he turns his head toward (text-colour:blue)[Thomas].
+
+A smile touches his lips.
+
+(text-colour:red)[Karakov]: Ah… I was wondering when we’d meet, (text-colour:blue)[General Alexei]. Curiosity has its own patience. And that must be your right-hand man, (text-colour:lime)[Ilya Petrov]. I do hope he is s reliable as people claim.
+
+(text-colour:blue)[Alexei]: (text-colour:red)[General Karakov]. I wasn’t expecting you tonight. It’s a privilege to have you here. Indeed, (text-colour:red)[General Karakov]. (text-colour:lime)[Ilya] has proven himself more than capable.
+
+[[Nod your head | Nod]]
+
+[[Stand still | Still]]
+
+[["It is an honor to be in your presence General."  | Honored]]
+
+
+:: \ Karakov Wrong way {"position":"3200,800","size":"100,100"}
+You speak first.
+
+The words leave your mouth cleanly. Correct. Respectful.
+
+For a fraction of a second, nothing happens.
+
+(text-colour:red)[Karakov] stops.
+
+Slowly, he turns to face you—not surprised, just mildly curious. His eyes move over you, measured, like he’s confirming a detail he already knew.
+
+The smile comes a moment later.
+
+(text-colour:red)[Karakov]: Ah. Eager.
+
+He steps closer—not into your space, but close enough that you feel the adjustment.
+
+(text-colour:red)[Karakov]: You’ll forgive me if I don’t return the greeting.
+When I enter a room, it’s usually better to let the room decide what it wants to say.
+
+A soft pause.
+
+(text-colour:red)[Karakov]: Still… confidence is a useful flaw.
+
+(set: $stress to $stress + 5)
+
+[[Apologies |Apologise]]
+
+[[Say nothing |Silence]]
+
+[[Justify your actions |Justify]]
+
+
+:: \ Karakov detects {"position":"3200,1000","size":"100,100"}
+(text-colour:red)[Karakov]’s eyes find you immediately.
+
+Not sharply. Not aggressively.
+As if he had been expecting the mistake.
+
+He stops walking.
+
+For a moment, the hangar waits with him.
+
+Karakov tilts his head, studying you openly now. The faint smile doesn’t leave his face—but it no longer feels polite.
+
+(text-colour:red)[Karakov]: Interesting. You move like someone who believes he’s already been noticed.
+
+A pause. Just long enough.
+
+(text-colour:red)[Karakov]: Tell me, (text-colour:lime)[Petrov],is that confidence… or nerves?
+
+His gaze doesn’t break. The room feels smaller. You are suddenly aware of your hands. Your breathing. The sound of your own boots on concrete.
+
+Someone clears their throat behind you.
+
+(text-colour:red)[Karakov] doesn’t look away.
+
+(set: $stress to $stress + 15)
+
+[[ Apologise |Apologise]]
+
+[[Justify your actions |Justify]]
+
+[[Say nothing |Silence]]
+
+
+:: \ Karakov first glance {"position":"2900,400","size":"100,100"}
+The doors of the warehouse opens.
+
+The room falls silent.
+
+Warehouse owner: (text-colour:red)[General Karakov]!.. your presence is most welcome. Everything is ready.
+
+(text-colour:red)[Karakov] steps in. 
+
+(text-colour:red)[General Karakov] wasn't supposed to be here. He was supposed to be elsewhere—enforcing outcomes with weapons, not negotiating their sale. He is the head of the military of the UNN after all.
+
+[[Don't move and wait for him to acknowledge you first | Karakov Right way]]
+
+[[Greet General Karakov | Karakov Wrong way]]
+
+
+:: \ Karakov's Gun {"position":"3900,1000","size":"100,100"}
+(if: $stress < 11)[You don’t think.
+Your hand moves before the thought finishes forming.
+
+Leather. Cold metal.
+
+For half a second, the weight of Karakov’s sidearm feels real in your palm.
+
+Then—
+
+The click of the safety echoes in the hangar.
+
+(text-colour:red)[Karakov] turns fully toward you to see wht this sound was bout, eyes narrowing, just in time to see the movement, just in time to register the threat.
+
+''You fire.''
+
+The shot cracks like thunder. Guards freeze, unsure, hesitant. Even the warehouse owner stumbles back.
+
+(text-colour:red)[Karakov] staggers, a faint grimace on his face, and then collapses to one knee. He doesn’t shout. He doesn’t curse. Only a sharp intake of breath.
+
+(text-colour:blue)[Thomas]’s eyes widen slightly, just a flicker, then he recovers, sliding smoothly into control mode. His gaze meets yours, steady, acknowledging the choice… and its consequences.
+
+The hangar feels impossibly quiet. Too quiet.
+
+You’ve done it. But the room is far from safe.]
+
+(if: $stress > 10)[Your hand closes around the gun.
+
+The weight is familiar—
+but wrong.
+
+Your fingers hesitate, just long enough for doubt to creep in. You try to adjust your grip, correct the angle, steady the shake.
+
+You don’t.
+
+The weapon slips in your palm.
+
+Not enough to fall.
+Enough to matter.
+
+Karakov’s eyes flick down for an instant.
+
+That’s all he needs.
+
+He twists away smoothly, already moving as your hand tightens on empty air. The gun is gone from reach, the moment shattered.
+
+He straightens his coat, unhurried.
+
+Karakov:
+Indecision is louder than a gunshot.
+
+Guards begin to move.]
+
+(if: $stress > 10)[[ ... | Karakov Lives]]
+
+(if: $stress < 11)[[Escape | Escape]]
+
+(if: $stress < 11)[[Try to eliminate all the threats | Clear the warehouse]]
+
+
+:: \ Nod {"position":"3400,200","size":"100,100"}
+Not submission.
+Not defiance.
+
+Just enough acknowledgment to be noticed.
+
+(text-colour:red)[Karakov]’s eyes flick to the movement. The smile lingers, faintly amused.
+
+(text-colour:red)[Karakov]: Good. You understand when silence is appropriate.
+
+He turns back to the table, fingertips resting on the documents as if claiming them.
+
+The room exhales. Conversation resumes, but the balance has shifted. Karakov speaks now, and others listen.
+
+[[ Listen to Karakov | Plan]] 
+
+
+:: \ Pants {"position":"1800,800","size":"100,100"}
+You tucked the gun inside your pants, shouldn't be a problem if no one gets suspicious.
+
+Thomas: Ride's here, let's just go. 
+
+
+
+[[ Head to the meeting point.  |Ride]]
+
+(set: $choice to "pants")
+
+
+:: \ Plan {"position":"3700,700","size":"100,100"}
+(text-colour:red)[Krakov] turns back and takes a look at the documents.
+
+He studies them for a moment, then looks up, unfazed.
+
+(text-colour:red)[Karakov]: Good. This deal will allow us to move decisively. No one will stand in the way for long.
+
+He closes the folder with a soft sound.
+
+(text-colour:red)[Karakov]: The war has lasted long enough. Prolonged conflicts only multiply the dead. I will decide who lives and who doesn’t. And tonight’s agreement ensures we have the tools to enforce that.
+
+A pause.
+
+(text-colour:red)[Karakov]: A single, coordinated action ends it all. After that, there will be no second power. Only us. Only the Union. And this arrangement will make the inescapable end to arrive quicker.
+
+His tone is calm. Almost instructional. But everybody in the warehouse can feel the hunger and the desire of power underlying in his words. Thomas says nothing.
+
+(text-colour:red)[Karakov] turns slightly, addressing the room without raising his voice.
+
+(text-colour:red)[Karakov]: “History will argue about numbers. It always does. What matters is that there will be no one left to argue with us. And these documents ensure the plan will bring the reckoning before they can even react.”
+
+Silence.
+
+(text-colour:blue)[Thomas] finally shifts his gaze. Not to (text-colour:red)[Karakov]. ''To you...''
+
+Eliminating him right then and there might end the war for good, you may never get the chance to be face to face with (text-colour:red)[Karakov] ever again. But if you fail, there is no coming back from it.
+
+
+(if: $choice is "sock")[[Reach for your gun | Shoot]]
+
+(if: $gotgun is "true" and $choice is "pants" )[[Reach for your gun | Shoot]]
+
+[[ Stick to the plan | wait for Karakov to leave]]
+
+(if: $gotgun is "false")[[Reach for Karakov's gun | Karakov's Gun]]
+
+
+:: \ Shoot {"position":"3900,800","size":"100,100"}
+(if: $stress < 11)[For a brief moment, (text-colour:blue)[Thomas]'s expression changes, not panic, not command. Recognition.
+As if he understands what choice might already be forming. And this time, he doesn’t stop it.
+
+You quickly reach for the gun on your ankle, your hand grips the gun.
+
+The click of the safety echoes in the hangar.
+
+(text-colour:red)[Karakov] turns fully toward you to see wht this sound was bout, eyes narrowing, just in time to see the movement, just in time to register the threat.
+
+''You fire.''
+
+The shot cracks like thunder. Guards freeze, unsure, hesitant. Even the warehouse owner stumbles back.
+
+(text-colour:red)[Karakov] staggers, a faint grimace on his face, and then collapses to one knee. He doesn’t shout. He doesn’t curse. Only a sharp intake of breath.
+
+(text-colour:blue)[Thomas]’s eyes widen slightly, just a flicker, then he recovers, sliding smoothly into control mode. His gaze meets yours, steady, acknowledging the choice… and its consequences.
+
+The hangar feels impossibly quiet. Too quiet.
+
+You’ve done it. But the room is far from safe.][(set: $achieved to "true")]
+
+(if: $stress < 10)[Your hand goes to your gun.
+
+You’ve done this before.
+You know this weight.
+
+But your pulse won’t slow.
+
+The gun clears the holster—
+
+Your grip slips.
+
+The shot goes wide, shattering metal behind Karakov. The sound rips through the hangar.
+
+For the first time, Karakov looks genuinely surprised.
+
+Then amused.
+
+He ducks behind the table as guards shout.
+
+Karakov: Ah. So that’s how tonight ends.][(set: $achieved to "false")
+
+
+
+(if: $achieved is "true")[[Try to Escape | Escape]]
+
+(if: $achieved is "true")[[Try to eliminate all the threats | Clear the warehouse]]
+
+(if: $achieved is "false")[[... | Karakov Lives]]
+
+
+
+
+
+
+:: \ Sock {"position":"1800,1000","size":"100,100"}
+You tucked the revolver inside your sock and tightened it with your shoelaces. The revolver is now fully hidden
+
+Thomas: Ride's here, let's get this going. 
+
+
+[[ Head to the meeting point.  |Ride]]
+
+(set: $choice to "sock")
+
+
+:: \ Still {"position":"3400,400","size":"100,100"}
+You don’t move.
+
+Hands visible. Posture steady.
+
+For a moment, Karakov doesn’t react at all. Then his gaze settles on you — assessing, weighing.
+
+Karakov: Discipline.
+Or restraint.
+
+He lets the word hang before looking away.
+
+Whatever judgment he makes, he keeps it to himself. The meeting continues, but you feel his attention linger like a hand on your shoulder.
+
+(set: $stress to $stress + 5)
+
+[[ Continue | Plan]] 
+
+
+:: \ Tour {"position":"4300,500","size":"100,100"}
+(if: $attempt is "failed")[Thomas: No need to worry, Ilya just wanted to check the documents to see if everything is as intended. 
+
+Warehouse owner released your arm. After pretending to check the documents, you gave them back to the dealer. ]
+
+
+
+Thomas: Perhaps… a quick tour of the containers, Ilya? It’s part of my inspection duties.
+
+The guards glance at you but don’t stop you. Their focus remains on Karakov’s retreating figure.
+
+You nod, moving with Thomas and the dealer down the narrow alleys between stacked containers. Shadows stretch around you. Silence, except for the distant echo of footsteps. The dealer brings the documennts with himself, in order to assure you that everything is as it should be.
+
+You reach a secluded spot. With a swift motion, Thomas snatches the documents from the warehouse owner’s hands. The man freezes, stunned. Before he can react, you disarm him and pin him quietly against the container wall.
+
+Thomas glances over. The trader struggles briefly, then goes still. You nod once the threat is taken care of.
+
+The documents are now secure under his coat. No sound reaches the hangar’s main floor.
+
+You slip between the containers, moving toward the backdoor at the far end. Outside, the yard is empty. No guards. No alarms. Just shadows and stacked containers stretching into the night.
+
+Alexei opens the door. You step through first, glancing back once. The hangar is still, the deal disrupted, the documents gone, and the trader incapacitated.
+
+You disappear into the alleys of the night. Quiet. Safe. For now.
+<img src="images/night.png">
+
+
+:: \ Try to steal J {"position":"2600,900","size":"100,100"}
+You asked Thomas to engage attention from the guards so you can steal your gun back.
+
+Thomas started asking guards their purpose as General Alexei. The guards were already suspicious of you so they were still paying attention to your moves. You weren't able to get your gun back. 
+
+You started walking towards the table in the middle of all the containers. 
+
+You started walking towards the table the meeting will be held in the middle of the warehouse. 
+ 
+ The warehouse smells faintly of polished wood and smoke. Everyone here knows their place.
+
+The warehouse owner clears his throat, arranging the documents on the table. Conversation is about to start.
+
+Then the doors open again.
+
+(if: $karakov is "true")[ Must be (text-colour:red)[Karakov]!]
+
+(set: $gotgun to "false")
+
+
+(if: $karakov is "true")[[ Stick to Morozev's instructions | Karakov Arrives]]
+
+
+(if: $karakov is "false")[[ Look back to see who it is | Karakov first glance]]
+
+
+[[Take the chance to investigate the files | Karakov detects]]
+
+
+:: \ Try to steal P {"position":"2600,500","size":"100,100"}
+You asked Thomas to engage attention from the guards so you can steal your gun back.
+
+Thomas started asking guards their purpose as General Alexei. While the guards were getting interrogated, you were managed to get your gun back from the tray.
+
+You started walking towards the table in the middle of all the containers. 
+ 
+ The warehouse smells faintly of polished wood and smoke. Everyone here knows their place.
+
+The warehouse owner clears his throat, arranging the documents on the table. Conversation is about to start.
+
+Then the doors open again/
+
+(if: $karakov is "true")[ Must be (text-colour:red)[Karakov]!]
+
+(set: $gotgun to "true")
+
+
+(if: $karakov is "true")[[ Stick to Morozev's instructions | Karakov Arrives]]
+
+
+(if: $karakov is "false")[[ Look back to see who it is | Karakov first glance]]
+
+
+[[Take the chance to investigate the files | Karakov detects]]
+
+
+:: \ Where to Hide {"position":"1600,700","size":"100,100"}
+You had a feeling that something might happen, so you decided to pick up the gun. Now it's time to decide where you'll put it. The gun is  small revolver, you should be able to hide it easily. But you must think carefully, you don't want to get caught sneaking a gun to the meeting.
+
+[[ Hide it on your hip, it may allow you to access it quickly if things go south. | Pants]]
+
+[[ Hide it on your back under your jacket, it's cold outside they might not check there.  | Jacket]]
+
+[[ Hide it inside your sock on your ankle, it is well hidden under your baggy pants. | Sock]]
+
+
+(set: $gotgun to "true")
+
+
+
+:: \ wait for Karakov to leave {"position":"3900,600","size":"100,100"}
+(text-colour:red)[Karakov] moves toward the exit. The guards follow his every step, their attention fully on him.
+
+(text-colour:blue)[Thomas] leans slightly, voice low but casual,
+
+(text-colour:blue)[Thomas]: Stick to the plan, I request a tour and we finish it off right then and there.
+
+You realize the files are unattended after everybody's attention shifted to Karakov leaving.
+
+Maybe you won't need to waste your time and you can quickly grab the files and leave.
+
+
+
+[[Grab the files without getting any attention | Grab Attempt]]
+
+[[Request a tour | Tour]]
+
+
+:: Apologise {"position":"3400,800","size":"100,100"}
+(text-colour:lime)[You]: My mistake, General.
+
+(text-colour:red)[Karakov] studies you for a moment longer than necessary.
+
+Then he nods — once.
+
+(text-colour:red)[Karakov]: Mistakes happen.
+What matters is knowing who is allowed to make them.
+
+He turns away, already dismissing the moment.
+
+You’re spared — but diminished.
+
+(set:$stress to $stress - 5)
+
+[[ Continue | Plan]] 
+
+
+:: Arrive {"position":"2400,700","size":"100,100"}
+After some time you arrive to a warehouse, it looks old. The doors open. Inside there are hundreds of containers, all seeming to have thousands of kilos of ammunnation and weapons. And in the middle of all the containers, there was the table where the meeting will be held.
+
+Security is tight but routine. No more than 6 people. IDs are checked. And now the check for any unwanted items.
+
+(if: $gotgun is "false")[The security started patting both of you down. He couldn't find anything.  He nodded towards the warehouse owner with his head and said "You may continue."]
+
+(if: $choice is "pants")[The security started patting both of you down. Without much searching, he felt the gun tucked in your pants. He mentioned the no gun policy and requested the gun from you. You had no choice but to give it to him. Then he put your gun on a tray next to him.]
+
+(if: $choice is "pants")[(set: $stress to $stress + 5)]
+
+(if: $choice is "jacket")[The security started patting both of you down. Without much searching, he felt the gun taped behind your back. He reched in and ripped the gun from your back. He mentioned the no gun policy and took your gun. Then he put your gun on a tray next to him. You could feel that he felt suspicious.]
+
+(if: $choice is "jacket")[(set: $stress to $stress + 10)]
+
+(if: $choice is "sock")[The security started patting both of you down. He didn't pat you down to your ankles. He nodded towards the dealer with his head and said "You may continue."]
+<img src="images/warehose.png">
+
+(if: $choice is "sock")[[Head towards the meeting table | Continue]]
+
+(if: $gotgun is "false")[[Head towards the meeting table | Continue]]
+
+(if: $choice is "pants")[[Head towards the meeting table | Continue]]
+
+(if: $choice is "pants")[[Try to steal the gun back from the tray | Try to steal P]]
+
+(if: $choice is "jacket")[[Head towards the meeting table | Continue]]
+
+(if: $choice is "jacket")[[Try to steal the gun back from the tray | Try to steal J]]
+
+
+
+
+:: Justify {"position":"3400,1000","size":"100,100"}
+(text-colour:lime)[You]: I believed it is appropriate, General.
+
+(text-colour:red)[Karakov] exhales softly through his nose — almost a laugh.
+
+He steps closer this time.
+
+Not threatening.
+Intimate.
+
+(text-colour:red)[Karakov]: Belief is a luxury afforded by victory.
+You’re not there yet.
+
+He turns away sharply.
+
+(text-colour:red)[Karakov]: Sit.
+And don’t improvise again.
+
+(set: $stress to $stress + 10)
+
+[[ Continue | Plan]] 
+
+
+:: Ride {"position":"2000,700","size":"100,100"}
+You get into an old-looking, yet well-maintained car.
+
+Once inside, you recognize the driver, a longtime servant of the Union. He keeps his eyes on the road, professional, saying nothing.
+
+You could leave it at that. Silence would draw no attention.  Or you might speak to him. Long service has a way of teaching people when to listen—and when to talk.
+<img src="images/car.png">
+
+[[ "It's an honor to meet a great compatriot like you, Morozev."  |Talk]]
+
+[[ Stay silent.  |Silent]]
+
+
+
+
+:: Silence {"position":"3400,1200","size":"100,100"}
+The silence stretches.
+
+(text-colour:red)[Karakov]’s smile fades — not into anger, but into something flatter.
+
+(text-colour:red)[Karakov]: Silence can be discipline…
+or fear.
+
+He lets the words hang, then turns back to the table.
+
+(text-colour:red)[Karakov]: We’ll find out which.
+
+You’re not dismissed.
+You’re being watched.
+
+(set:$stress to $stress + 5)
+
+[[ Continue | Plan]] 
+
+
+:: Silent {"position":"2200,500","size":"100,100"}
+You chose to stay silent, you don't want  a mission of this caliber to fail because of some  small talk. Just focus on the mission and act natural.
+
+
+(set: $karakov to "false")
+
+[[ Continue to the meeting point  |Arrive]]
+
+
+
+
+:: Start {"position":"1200,700","size":"100,100"}
+The world never recovered from the Cold War. It simply chose sides and kept going. The (text-colour:orange)[Union of Northern Nations] and the Inter(text-colour:navy)[ American Confederation] stand as the last two superpowers, locked in a conflict that has outlived ideologies, borders, and generations. 
+
+The war no longer rages everywhere at once. Instead, it burns quietly, fed by deals made in private rooms and weapons shipped under false names. Battles are no longer won on the front lines. They are decided in meetings like this one. 
+
+Tonight, in a neutral city far from the headlines, an arms deal is about to take place, one important enough to shift the balance of the war. If the right information changes hands, the conflict could finally end. Or evolve into something worse. 
+
+You are (text-colour:lime)[Ilya Petrov], an agent of the Inter American Confederation, buried deep inside the enemy’s command structure. To the Union, you are a loyal officer. In reality, you are (text-colour:lime)[Matthew Cole], a necessary risk.
+
+At your side is another operative: (text-colour:blue)[General Alexei Orlov], publicly feared, privately trusted. Beneath the uniform, he is (text-colour:blue)[Thomas Hale], bound to the same cause, carrying a different burden. To the(text-colour:orange)[ Union], you are both loyal servants. To the (text-colour:navy)[Confederation], you are assets that cannot afford to fail. And before the night is over, you will learn the difference between ending a war, and deciding who survives it.
+
+(set: $knowledge to 0)
+(set: $stress to 0)
+
+[[ Get ready | Get Ready]]
+
+
+
+:: Talk {"position":"2200,900","size":"100,100"}
+Morozev: Keep all that talk for General Karakov, you'll need it. When Karakov enters, don’t move. Don’t greet him before he greets you first. Keep your hands where he can see them.
+
+That answer shocks you. General Karakov wasn’t meant to attend this meeting. He was supposed to be elsewhere—enforcing outcomes with weapons, not negotiating their sale. He is the head of the military of the UNN after all.  
+
+Things just got more intense. Stealing the documents will be way harder than expected. 
+
+(if: $gotgun is true)[But, eliminating a man like him might mean the end of the war.]
+
+
+
+[[ Continue to the meeting point  |Arrive]]
+
+(set: $karakov to "true")
+
+(set: $knowledge to $knowledge + 10)
+
+
